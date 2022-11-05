@@ -23,5 +23,5 @@ Different problems that could be solved by using GA (I think you know most of th
 # Sources
 - https://livebook.manning.com/book/classic-computer-science-problems-in-python/chapter-5/v-3/2
 - https://youtu.be/7J-DfS52bnI
-- https://www.inf.tu-dresden.de/content/institutes/ki/cl/study/summer14/pssai/slides/GA_for_TSP.pdf
+- https://www.inf.tu-dresden.de/content/institutes/ki/cl/study/summer14/pssai/slides/GA_for_TSP.pdf (huge and hard to understand, but could be useful)
 - https://youtu.be/VOEOU3he8rU
