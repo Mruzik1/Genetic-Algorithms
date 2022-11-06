@@ -3,8 +3,8 @@ Implementing some tasks using genetic algorithms for TUKE
 
 # To-Do List
 1) Learn about genetic algorithm basics
-2) Choice a problem to solve using a few genetic algorithm methods
-   (Or probably we can solve, for example, 3 problems (1 problem for 1 person), it would be even easier).
+2) Choice a problem to solve using a few genetic algorithm methods.
+   - Or probably we can solve, for example, 3 problems (1 problem for 1 person), it would be even easier.
 3) Write several scripts in ``Python`` (probably with ``matplotlib`` and ``numpy``)
 4) Perform some tests and experiments with the scripts by giving them different data
 5) Write a ``preudo-code`` of those algorithms with short notes on differences between them
