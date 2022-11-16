@@ -1,1 +1,1 @@
-# Nurse Scheduling Problem :)
+# Nurse Scheduling Problem
