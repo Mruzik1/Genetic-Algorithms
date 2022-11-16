@@ -10,6 +10,7 @@ How to work the branch:
 2) How to push:
    ```
       git branch (Make sure you are working with the TSP branch)
-      git commit -am "What have been changed"
+      git add .
+      git commit -m "What have been changed"
       git push
    ```
