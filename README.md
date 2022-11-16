@@ -5,11 +5,12 @@ How to work the branch:
    ```
       git clone https://github.com/Mruzik1/Genetic-Algorithms.git
       git switch GCP (or "git checkout GCP")
-      git pull
+      git pull 
    ```
 2) How to push:
    ```
       git branch (Make sure you are working with the GCP branch)
-      git commit -am "What have been changed"
+      git add .
+      git commit -m "What have been changed"
       git push
    ```
