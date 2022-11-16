@@ -1,12 +1,16 @@
-# Genetic-Algorithms
-Implementing some tasks using genetic algorithms for TUKE
+# Nurse Scheduling Problem
+How to work the branch:
 
-# To-Do List
-- Figure out how to work with GitHub, how to collaborate
-- Learn about genetic algorithms basics 
-- Choice the first problem to solve using a genetic algorithm
-- Break the problem into several tasks and work with them separately
-- Find another problem and go to the step above (repeat 2-3 times until the deadline)
-
-# Sources
-Will be added soon :)
+1) Firstly you need:
+   ```
+      git clone https://github.com/Mruzik1/Genetic-Algorithms.git
+      git switch NSP (or "git checkout NSP")
+      git pull
+   ```
+2) How to push:
+   ```
+      git branch (Make sure you are working with the NSP branch)
+      git add .
+      git commit -m "What have been changed"
+      git push
+   ```
