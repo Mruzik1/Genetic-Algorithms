@@ -9,13 +9,15 @@ class NodesGenerator:
     def __init__(self, count: int):
         self.__axis_nodes = np.array([(randint(0, 500), randint(0, 500)) for _ in range(count)])
     
-    # generate typical txt file with distances between the nodes
-    def generate_distances(self, path: str):
+
+    # generates a txt file with distances between the nodes
+    def generate_file(self, path: str):
         fp = open(path, 'w')
         for i, n1 in enumerate(self.__axis_nodes):
             for j, n2 in enumerate(self.__axis_nodes[i+1:]):
                 fp.write(f'{i+1} {i+j+2} {int(np.sqrt((n1[0]-n2[0])**2 + (n1[1]-n2[1])**2))}\n')
         fp.close()
+
 
     # reads nodes from the generated file, preprocess data 
     def __read_from_file(self, path: str) -> np.ndarray:
@@ -24,19 +26,37 @@ class NodesGenerator:
             nodes_raw = nodes_raw.astype(np.int32)
         return nodes_raw
 
-    # returns nodes dictionary (consisting of the Node objects)
-    # {...number_of_node: node...}
-    def get_nodes_dict(self, path: str) -> dict:
+
+    # returns nodes list (consisting of the Node objects)
+    def get_nodes_list(self, path: str) -> list:
         nodes_raw = self.__read_from_file(path)
-        return {i: Node(i, nodes_raw) for i in range(1, nodes_raw.T[:2].max()+1)}
+        return [Node(i, nodes_raw) for i in range(1, nodes_raw.T[:2].max()+1)]
+
     
+    # prints nodes list
+    def print_nodes(self, nodes: list):
+        print('[', end=' ')
+        for node in nodes:
+            print(node, end=" ")
+        print(']')
+
+
+    # counts total cost of the way
+    def total_cost(self, nodes: list) -> int:
+        total_cost = 0
+        for i in list(range(1, len(nodes))) + [0]:
+            total_cost += nodes[i].get_distance(nodes[i-1])
+        return total_cost
+    
+
     # visualization using matplotlib
-    def draw_algorithm(self, path):
+    def draw_path(self, nodes: list):
         plt.scatter(self.__axis_nodes[:, 0], self.__axis_nodes[:, 1])
 
-        for i in range(0, len(path)):
-            x1, x2 = self.__axis_nodes[path[i]-1][0], self.__axis_nodes[path[i-1]-1][0]
-            y1, y2 = self.__axis_nodes[path[i]-1][1], self.__axis_nodes[path[i-1]-1][1]
+        for i in range(0, len(nodes)):
+            node, prev_node = nodes[i].get_number()-1, nodes[i-1].get_number()-1
+            x1, x2 = self.__axis_nodes[node][0], self.__axis_nodes[prev_node][0]
+            y1, y2 = self.__axis_nodes[node][1], self.__axis_nodes[prev_node][1]
             plt.plot((x1, x2), (y1, y2), color='r')
         
         plt.show()
