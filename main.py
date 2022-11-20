@@ -1,4 +1,4 @@
-from ga import Crossover
+from ga import GeneticAlgorithm
 from tsp import NodesGenerator
 from random import shuffle
 
@@ -6,14 +6,13 @@ from random import shuffle
 nodes_generator = NodesGenerator(20)
 # nodes_generator.generate_file('./data/distances.txt')
 
-nodes1 = nodes_generator.get_nodes_list('./data/distances.txt')
-nodes2 = nodes1.copy()
-shuffle(nodes2)
+primal_nodes = nodes_generator.get_nodes_list('./data/distances.txt')
 
-print(*nodes1)
-print(*nodes2)
+print(*primal_nodes, '\n\n')
 
 
-crossover = Crossover()
-crossover.cycle_crossover(nodes1, nodes2)
-print(*crossover.get_offspring())
+ga = GeneticAlgorithm(1/len(primal_nodes), nodes_generator.total_cost)
+ga.init_population(50, primal_nodes)
+final_pop = ga.start(2500, 10)
+
+print('\n\n\n', *final_pop)

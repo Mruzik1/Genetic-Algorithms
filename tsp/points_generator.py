@@ -33,7 +33,7 @@ class NodesGenerator:
         return [Node(i, nodes_raw) for i in range(1, nodes_raw.T[:2].max()+1)]
 
 
-    # counts total cost of the way
+    # counts total cost of the way (it is also a fitness function)
     def total_cost(self, nodes: list) -> int:
         total_cost = 0
         for i in list(range(1, len(nodes))) + [0]:

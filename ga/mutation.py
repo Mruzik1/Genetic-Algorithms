@@ -12,15 +12,15 @@ class Mutation:
         self.__offspring = offspring
 
 
-    # random two elements inversion (chance is 1/offsping_length)
+    # random subset inversion (chance is 1/offsping_length)
     def inversion(self) -> list:
         tmp_offspring = self.__offspring.copy()
 
         if len(self.__offspring) and random() < self.__chance:
-            start = randint(0, len(tmp_offspring)-1)
-            end = start+1 if start+1 < len(tmp_offspring) else 0
+            start = randint(0, len(tmp_offspring)-2)
+            end = randint(start+2, len(tmp_offspring))
 
-            tmp_offspring[start], tmp_offspring[end] = tmp_offspring[end], tmp_offspring[start]
+            tmp_offspring = tmp_offspring[:start] + list(reversed(tmp_offspring[start:end])) + tmp_offspring[end:]
 
         return tmp_offspring
 

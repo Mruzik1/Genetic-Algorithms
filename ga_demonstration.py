@@ -27,10 +27,11 @@ print(f"Single point crossover: {''.join(crossover.get_offspring())}")
 crossover.uniform_crossover(a, b)
 print(f"Uniform crossover: {''.join(crossover.get_offspring())}")
 
+
 # Try mutation
 mutation.set_offspring(list(range(1, 10)))
 print('\nMutations performed on the range from 1 to 9 (chance of the mutation is 1/offspring_length)')
-print(f"Inversion (2 elements): {mutation.inversion()}")
+print(f"Inversion (random subtour): {mutation.inversion()}")
 print(f"Replace (1 element):    {mutation.replace()}")
 
 
