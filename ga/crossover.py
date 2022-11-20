@@ -30,6 +30,7 @@ class Crossover:
         self.__offspring = [parent2[i] if mask[i] else parent1[i] for i in range(len(parent1))]
 
     
+    ### Related to the cycle crossover (for TSP-like problems, elements should be ordered) ###
     # identifies cycles
     def __generate_cycle(self, idx: int, p1: list, p2: list) -> list:
         result = [p1[idx], p2[idx]]
@@ -47,7 +48,7 @@ class Crossover:
                 return bool(i%2)
 
 
-    # performs cycle crossover (for TSP-like problems, elements should be the same)
+    # performs cycle crossover
     def cycle_crossover(self, parent1: list, parent2: list):
         used_genes = []
         cycles = []

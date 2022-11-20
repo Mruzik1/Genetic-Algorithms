@@ -1,12 +1,14 @@
 from ga import Crossover
+from ga import Mutation
 from random import shuffle
 
 
 crossover = Crossover()
+mutation = Mutation(1/9)
 
 
-a = ['=']*50
-b = ['-']*50
+a = ['0']*50
+b = ['1']*50
 
 print('\nRegular crossovers:')
 print(''.join(a))
@@ -25,6 +27,12 @@ print(f"Single point crossover: {''.join(crossover.get_offspring())}")
 crossover.uniform_crossover(a, b)
 print(f"Uniform crossover: {''.join(crossover.get_offspring())}")
 
+# Try mutation
+mutation.set_offspring(list(range(1, 10)))
+print('\nMutations performed on the range from 1 to 9 (chance of the mutation is 1/offspring_length)')
+print(f"Inversion (2 elements): {mutation.inversion()}")
+print(f"Replace (1 element):    {mutation.replace()}")
+
 
 # Cycle-like crossover demonstration (uses while solving TSP for instance)
 a = '1234567890abcdefghijklmnopqrstuvwxyz'.upper()
@@ -32,7 +40,7 @@ b = list(a)
 shuffle(b)
 b = ''.join(b)
 
-print("\nCycle-like crossovers (for TSP and similar, genes mustn't repeat):")
+print("\nCycle-like crossover (for TSP and similar, genes must be ordered):")
 print(a)
 print(b, '\n')
 
