@@ -32,14 +32,6 @@ class NodesGenerator:
         nodes_raw = self.__read_from_file(path)
         return [Node(i, nodes_raw) for i in range(1, nodes_raw.T[:2].max()+1)]
 
-    
-    # prints nodes list
-    def print_nodes(self, nodes: list):
-        print('[', end=' ')
-        for node in nodes:
-            print(node, end=" ")
-        print(']')
-
 
     # counts total cost of the way
     def total_cost(self, nodes: list) -> int:
