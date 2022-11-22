@@ -37,7 +37,7 @@ class GeneticAlgorithm:
     # because we have a minimizing problem, it's important to actualize the weights
     def __choice_parents(self) -> list:
         fit_scores = self.__get_fitness_scores()
-        w = [(sum(fit_scores))//i for i in fit_scores]
+        w = [(sum(fit_scores)-i)/sum(fit_scores) for i in fit_scores]
         
         return choices(self.__population, weights=w, k=2)
 
@@ -64,10 +64,10 @@ class GeneticAlgorithm:
         current_minimum = min(self.__population, key=lambda x: self.__fit_func(x))
 
         print(f'Population: {population_n} / {k}\t \
-                Current minimum: {self.__fit_func(current_minimum)}', end='\r')
+                Current minimum: {self.__fit_func(current_minimum)}  ', end='\r')
 
         if population_n % (k // 5) == 0:
-            print('\n', *current_minimum, '\n')
+            print('\n', *self.__get_fitness_scores(), '\n')
 
 
     # starts learning

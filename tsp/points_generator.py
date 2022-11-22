@@ -1,16 +1,20 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from random import randint
 from .node import Node
 
 
 class NodesGenerator:
     # self.__axis_nodes - points (nodes) with random x and y
-    def __init__(self, count: int):
-        self.__axis_nodes = np.array([(randint(0, 500), randint(0, 500)) for _ in range(count)])
+    def __init__(self, count: int, saved_axis = None):
+        if (saved_axis == None):
+            x = np.random.choice(range(count), count, replace=False)
+            y = np.random.choice(range(count), count, replace=False)
+            self.__axis_nodes = np.array([x, y]).T
+        else:
+            self.__axis_nodes = self.__read_from_file(saved_axis)
     
 
-    # generates a txt file with distances between the nodes
+    # generates a file with distances between the nodes
     def generate_file(self, path: str):
         fp = open(path, 'w')
         for i, n1 in enumerate(self.__axis_nodes):
@@ -19,12 +23,20 @@ class NodesGenerator:
         fp.close()
 
 
-    # reads nodes from the generated file, preprocess data 
+    # generates a file with axis
+    def save_axis(self, path: str):
+        fp = open(path, 'w')
+        for x, y in self.__axis_nodes:
+            fp.write(f'{x} {y}\n')
+        fp.close()
+
+
+    # reads nodes or axis from the generated file, data preprocess
     def __read_from_file(self, path: str) -> np.ndarray:
         with open(path) as fp:
-            nodes_raw = np.array([e.split() for e in fp.read().split('\n') if len(e) != 0]).astype(object)
-            nodes_raw = nodes_raw.astype(np.int32)
-        return nodes_raw
+            raw = np.array([e.split() for e in fp.read().split('\n') if len(e) != 0]).astype(object)
+            raw = raw.astype(np.int32)
+        return raw
 
 
     # returns nodes list (consisting of the Node objects)
