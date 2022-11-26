@@ -29,7 +29,7 @@ crossover.uniform_crossover(a, b)
 print(f"Uniform crossover: {''.join(crossover.get_offspring())}")
 
 
-# Try mutation
+# Different mutations
 mutation.set_offspring(list(range(1, 10)))
 print('\nMutations performed on the range from 1 to 9')
 print(f"Inversion (random subtour): {mutation.inversion()}")
