@@ -7,20 +7,20 @@ Crossover is one of the most important things in Genetic Algorithms. This part o
 
 ### Single-Point Crossover
 Will be added later...<br /><br />
-![SinglePoint](https://i.imgur.com/796Bytg.png)
+<img src="https://i.imgur.com/796Bytg.png" alt="SinglePoint" width="650" />
 
 ### Multi-Point Crossover
 One of the common crossover types is Multi-Point Crossover or N-Point Crossover. <br /><br />
-![MultiPoint](https://i.imgur.com/0xRD34b.png)
+<img src="https://i.imgur.com/0xRD34b.png" alt="MultiPoint" width="650" />
 
 ### Uniform Crossover
 Will be added later...<br /><br />
-![Uniform](https://i.imgur.com/OHP5uMF.png)
+<img src="https://i.imgur.com/OHP5uMF.png" alt="Uniform" width="650" />
 
 ### Cycle Crossover
 Will be added later...<br /><br />
-![Cycle](https://i.imgur.com/u9JTXwR.png)
+<img src="https://i.imgur.com/u9JTXwR.png" alt="Cycle" width="650" />
 
 ### Partially Mapped Crossover
 Will be added later...<br /><br />
-![PMX](https://i.imgur.com/quoXkWr.png)
+<img src="https://i.imgur.com/quoXkWr.png" alt="PMX" width="650" />
