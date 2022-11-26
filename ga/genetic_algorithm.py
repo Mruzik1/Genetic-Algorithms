@@ -46,17 +46,17 @@ class GeneticAlgorithm:
     def __perform_crossover(self, k: int):
         for _ in range(k):
             parent1, parent2 = self.__choice_parents()
-            self.__crossover.cycle_crossover(parent1, parent2)
+            self.__crossover.pmx_crossover(parent1, parent2)        # right here you can change a crossover method
             
             yield self.__crossover.get_offspring()
 
     
-    # generates mutated offsprings with some chance (usually 1/len(population))
+    # generates mutated offsprings with some chance
     def __perform_mutation(self, offsprings):
         for i in offsprings:
-            self.__mutation.set_offspring(i)
+            self.__mutation.set_offspring(i)        
             
-            yield self.__mutation.inversion()
+            yield self.__mutation.inversion()       # right here you can change a mutation method
 
 
     # draws some parameters in the console while the algorithm is running

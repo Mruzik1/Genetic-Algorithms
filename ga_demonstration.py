@@ -4,9 +4,10 @@ from random import shuffle
 
 
 crossover = Crossover()
-mutation = Mutation(1/9)
+mutation = Mutation(1)
 
 
+# parents
 a = ['0']*50
 b = ['1']*50
 
@@ -30,21 +31,26 @@ print(f"Uniform crossover: {''.join(crossover.get_offspring())}")
 
 # Try mutation
 mutation.set_offspring(list(range(1, 10)))
-print('\nMutations performed on the range from 1 to 9 (chance of the mutation is 1/offspring_length)')
+print('\nMutations performed on the range from 1 to 9')
 print(f"Inversion (random subtour): {mutation.inversion()}")
-print(f"Replace (1 element):    {mutation.replace()}")
+print(f"Replace (random subtour):   {mutation.replace()}")
 
 
-# Cycle-like crossover demonstration (uses while solving TSP for instance)
-a = '1234567890abcdefghijklmnopqrstuvwxyz'.upper()
+# Special crossovers
+# parents
+a = list(range(1, 15))
 b = list(a)
 shuffle(b)
-b = ''.join(b)
 
-print("\nCycle-like crossover (for TSP and similar, genes must be ordered):")
+print('\nCrossovers for ordered chromosomes (good for solving problems with graphs):')
 print(a)
 print(b, '\n')
 
+
 # Cycle crossover
-crossover.cycle_crossover(list(a), list(b))
-print(f"Cycle crossover: {''.join(crossover.get_offspring())}")
+crossover.cycle_crossover(a, b)
+print(f"Cycle crossover: {crossover.get_offspring()}")
+
+# PMX crossover
+crossover.pmg_crossover(a, b)
+print(f"Partially mapped crossover: {crossover.get_offspring()}")

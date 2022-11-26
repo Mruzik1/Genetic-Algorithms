@@ -12,7 +12,7 @@ class Mutation:
         self.__offspring = offspring
 
 
-    # finds random indexes of a subset
+    # finds a random subset
     def __find_subset(self) -> tuple:
         if len(self.__offspring) and random() < self.__chance:
             start = randint(0, len(self.__offspring)-2)
