@@ -119,7 +119,7 @@ Has the same purpose as the previous one, even though works different. Firstly w
 
 
 # Mutation Examples
-Unlike crossovers, mutations are "avoidable". In other words, theoretically a genetic algorithm can still work without them. But the results are going to be far worse. As without an entropy (that every single mutation brings) the algorithm will stuck in a local optima. Mutations usually have a low chance to be used on an offspring to keep some stability. Below are pictures illustrating the mutations I used while implementing the TSP solver.
+Unlike crossovers, mutations are "avoidable". In other words, theoretically a genetic algorithm can still work without them. But the results are going to be far worse. As without an entropy (that every single mutation brings) the algorithm will stuck in a local optima. Mutations usually have a low chance to be used on an offspring to keep some stability. Below are pictures illustrating the mutations I used while implementing the TSP solver (since it's pretty easy without pseudocode).
 
 ## Replacement Mutation
 <img src="https://i.imgur.com/OW10fa4.png" alt="Replacement" width="650" />
