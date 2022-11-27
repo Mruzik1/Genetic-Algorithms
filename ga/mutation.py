@@ -1,4 +1,4 @@
-from random import randint, shuffle, random
+from random import randint, random
 
 
 class Mutation:
