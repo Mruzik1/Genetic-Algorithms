@@ -116,3 +116,14 @@ Has the same purpose as the previous one, even though works different. Firstly w
                 
     <b>SET</b> <i>offspring's element at new_index</i> <b>TO</b> <i>current element of the parent two</i>
 </pre>
+
+
+# Mutation Examples
+Unlike crossovers, mutations are "avoidable". In other words, theoretically a genetic algorithm can still work without them. But the results are going to be far worse. As without an entropy (that every single mutation brings) the algorithm will stuck in a local optima. Below are some pictures illustrating mutations I used while implementing the TSP solver.
+
+## Replacement Mutation
+<img src="https://i.imgur.com/OW10fa4.png" alt="Replacement" width="650" />
+
+
+## Inversion Mutation
+<img src="https://i.imgur.com/zq7MDc0.png" alt="Inversion" width="650" />
