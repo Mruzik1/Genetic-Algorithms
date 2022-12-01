@@ -1,42 +1,34 @@
-from ga import Crossover
-from ga import Mutation
+from ga import Crossover, Mutation, MutationType, CrossoverType
 from random import shuffle
 
 
-crossover = Crossover()
-mutation = Mutation(1)
+crossover = Crossover(CrossoverType.MULTI_POINT)
+mutation = Mutation(1, MutationType.INVERTION)
 
 
+## Regular crossovers
 # parents
 a = ['0']*50
 b = ['1']*50
+points = 5
 
 print('\nRegular crossovers:')
 print(''.join(a))
 print(''.join(b), '\n')
 
 # N-point crossover (can be every number from 1 to the chromosomes_length - 1)
-points = 5
-crossover.n_point(a, b, points)
-print(f"{points}-point crossover: {''.join(crossover.get_offspring())}")
+print(f"{points}-point crossover: {''.join(crossover.perform(a, b, points=points))}")
 
 # Single point crossover
-crossover.n_point(a, b, 1)
-print(f"Single point crossover: {''.join(crossover.get_offspring())}")
+crossover.set_type(CrossoverType.SINGLE_POINT)
+print(f"Single point crossover: {''.join(crossover.perform(a, b))}")
 
 # Uniform crossover
-crossover.uniform_crossover(a, b)
-print(f"Uniform crossover: {''.join(crossover.get_offspring())}")
+crossover.set_type(CrossoverType.UNIFORM)
+print(f"Uniform crossover: {''.join(crossover.perform(a, b))}")
 
 
-# Different mutations
-mutation.set_offspring(list(range(1, 10)))
-print('\nMutations performed on the range from 1 to 9')
-print(f"Inversion (random subtour): {mutation.inversion()}")
-print(f"Replace (random subtour):   {mutation.replace()}")
-
-
-# Special crossovers
+## Special crossovers
 # parents
 a = list(range(1, 15))
 b = list(a)
@@ -46,11 +38,20 @@ print('\nCrossovers for ordered chromosomes (good for solving problems with grap
 print(a)
 print(b, '\n')
 
-
 # Cycle crossover
-crossover.cycle_crossover(a, b)
-print(f"Cycle crossover: {crossover.get_offspring()}")
+crossover.set_type(CrossoverType.CYCLE)
+print(f"Cycle crossover: {crossover.perform(a, b)}")
 
 # PMX crossover
-crossover.pmg_crossover(a, b)
-print(f"Partially mapped crossover: {crossover.get_offspring()}")
+crossover.set_type(CrossoverType.PMX)
+print(f"Partially mapped crossover: {crossover.perform(a, b)}")
+
+
+# Different mutations
+print('\nMutations performed on the range from 1 to 9')
+offspring = list(range(1, 10))
+
+print(f"Inversion (random subtour): {mutation.perform(offspring)}")
+
+mutation.set_type(MutationType.REPLACEMENT)
+print(f"Replace (random subtour):   {mutation.perform(offspring)}")

@@ -10,6 +10,10 @@ class NodesGenerator:
             x = np.random.choice(range(count), count, replace=False)
             y = np.random.choice(range(count), count, replace=False)
             self.__axis_nodes = np.array([x, y]).T
+            
+            self.generate_file('./data/distances.txt')
+            self.save_axis('./data/axis.txt')
+
         else:
             self.__axis_nodes = self.__read_from_file(saved_axis)
     
