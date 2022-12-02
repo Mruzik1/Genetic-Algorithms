@@ -119,7 +119,7 @@ Has the same purpose as the previous one, even though works different. Firstly w
     <b>SET</b> <i>offspring's element at new_index</i> <b>TO</b> <i>current element of the parent two</i>
 </pre>
 
-<br /><br />
+<br />
 
 
 # Mutation Examples
@@ -132,7 +132,7 @@ Unlike crossovers, mutations are "avoidable". In other words, theoretically a ge
 ## Inversion Mutation
 <img src="https://i.imgur.com/zq7MDc0.png" alt="Inversion" width="650" />
 
-<br /><br />
+<br />
 
 
 # Additional Info
@@ -144,7 +144,7 @@ There are different ways to select parents such as: <i>Roulette Wheel Selection,
 <img src="https://latex.codecogs.com/png.image?\dpi{110}\bg{black}p_{i}&space;=&space;\frac{f_{i}^{-1}}{\sum_{j=1}^{N}f_{j}}" alt="Probability formula"/> <br />
 Where N is a total population size, and <img src="https://latex.codecogs.com/png.image?\dpi{110}\bg{black}f_{i}" alt="fi"/> is a fitting score of a chromosome <img src="https://latex.codecogs.com/png.image?\dpi{110}\bg{black}c_{i}" alt="ci"/> from the whole population. And since we have a minimization problem, it's important to raise the fitting score to -1.
 
-<br /><br />
+<br />
 
 
 # How to use
@@ -181,7 +181,7 @@ The TSP module's main class is `NodesGenerator`. It provides a few tools for wor
     - `start`<br />Requires two arguments: `k` (time of the population's living / an amount of evolutional steps) and `selector` (how many chromosomes will die and be replaces by offsprings during the selection process). Starts an evolution, prints a process of the evolution, fills a `history`. Returns a chromosome with the best result.
     - `history`<br />A @property method that returns a history of the evolving (gotten after the `start` was successfully executed).
 
-<br /><br />
+<br />
 
 
 # Experiments
