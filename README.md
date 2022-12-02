@@ -185,4 +185,29 @@ The TSP module's main class is `NodesGenerator`. It provides a few tools for wor
 
 
 # Experiments
-Will be added soon...
+## Experiment 1
+GAs with two different mutation chances (one has 100%, another has only 10%).
+### Replacement
+- Initial parameters<br />
+<img src="https://i.imgur.com/tBnIMJN.png" width="700"/>
+- An outcome<br />
+<img src="https://i.imgur.com/LPO50lh.png" width="700"/>
+- Conclusion<br />
+The plot with 100% chance is extremely spiky, unlike the one with a mutation chance of 8% which is pretty stable. The best result from the first algorithm is 155, and from the second one is 136. I think it is obvious which GA evaluates better. Additionaly you can see some kind of "stairs" on the second plot. And, on other hand, the plot with 100% chance is like a slide.
+
+### Inversion
+- Initial parameters<br />
+<img src="https://i.imgur.com/Ij1miX3.png" width="700"/>
+- An outcome<br />
+<img src="https://i.imgur.com/i9gZDX2.png" width="700"/>
+- Conclusion<br />
+An outcome gotten by using Inversion is way more smooth comparing to the replacement method. In other words Replacement brings more chaos to our data. The conclusion is similar as the previos one has.
+
+## Experiment 2
+GA with a 0% mutation chance.
+- Initial parameters<br />
+<img src="https://i.imgur.com/tLm4iof.png" width="700"/>
+- An outcome<br />
+<img src="https://i.imgur.com/jHmEZR0.png" width="700"/>
+- Conclusion<br />
+As you can see the blue line is descending as fast as the orange one, but suddenly starts going straight. It means that we gotten stuck in a local optima due to the lack of entropy in the population. The answer won't change anymore, respectively it won't become better.
