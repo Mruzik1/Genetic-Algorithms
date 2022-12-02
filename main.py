@@ -11,11 +11,11 @@ print(*primal_nodes, '\n\n')
 
 
 # initialize genetic algorithms with different params
-ga1 = GeneticAlgorithm(0.1, CrossoverType.PMX, MutationType.INVERTION, fitness_function=nodes_generator.total_cost)
+ga1 = GeneticAlgorithm(0.1, CrossoverType.PMX, MutationType.INVERSION, fitness_function=nodes_generator.total_cost)
 ga1.init_population(50, primal_nodes)
 final_path1 = ga1.start(600, 20)
 
-ga2 = GeneticAlgorithm(0.1, CrossoverType.CYCLE, MutationType.INVERTION, fitness_function=nodes_generator.total_cost)
+ga2 = GeneticAlgorithm(0.1, CrossoverType.CYCLE, MutationType.INVERSION, fitness_function=nodes_generator.total_cost)
 ga2.init_population(50, primal_nodes)
 final_path2 = ga2.start(600, 20)
 

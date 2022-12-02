@@ -2,6 +2,8 @@
 Solving Traveling Salesman Problem using Genetic Algorithms to show how it actually works. Below are some descriptions of different types of mutations and crossovers.
 Also I performed a few experiments applying different crossovers, mutations and variety of parameters while solving the TSP.
 
+<br />
+
 
 # Crossover Examples
 Crossover is one of the most important things in Genetic Algorithms. This part of GA itself could be considered as an "evolution performer". There are several examples of crossovers with a portion of pseudocode and the pictures illustrating the process.
@@ -117,6 +119,8 @@ Has the same purpose as the previous one, even though works different. Firstly w
     <b>SET</b> <i>offspring's element at new_index</i> <b>TO</b> <i>current element of the parent two</i>
 </pre>
 
+<br /><br />
+
 
 # Mutation Examples
 Unlike crossovers, mutations are "avoidable". In other words, theoretically a genetic algorithm can still work without them. But the results are going to be far worse. As without an entropy (that every single mutation brings) the algorithm will stuck in a local optima. Mutations usually have a low chance to be used on an offspring to keep some stability. Below are pictures illustrating the mutations I used while implementing the TSP solver (since it's pretty easy without pseudocode).
@@ -127,3 +131,58 @@ Unlike crossovers, mutations are "avoidable". In other words, theoretically a ge
 
 ## Inversion Mutation
 <img src="https://i.imgur.com/zq7MDc0.png" alt="Inversion" width="650" />
+
+<br /><br />
+
+
+# Additional Info
+## What My Implementation Can Solve
+The algorithm I created (genetic_algorithm.py, mutation.py and crossover.py are universal) can only solve minimization problems with ordered genes (TSP, GCP, VRP, etc).
+
+## Parents Selection
+There are different ways to select parents such as: <i>Roulette Wheel Selection, Stochastic Universal Sampling, Tournament Selection, etc</i>. In my implementation I use the first one - Roulette Wheel Selection. According to the name, it functions like a roulette wheel where a probability for every chromosome has following formula: <br />
+<img src="https://latex.codecogs.com/png.image?\dpi{110}\bg{black}p_{i}&space;=&space;\frac{f_{i}^{-1}}{\sum_{j=1}^{N}f_{j}}" alt="Probability formula"/> <br />
+Where N is a total population size, and <img src="https://latex.codecogs.com/png.image?\dpi{110}\bg{black}f_{i}" alt="fi"/> is a fitting score of a chromosome <img src="https://latex.codecogs.com/png.image?\dpi{110}\bg{black}c_{i}" alt="ci"/> from the whole population. And since we have a minimization problem, it's important to raise the fitting score to -1.
+
+<br /><br />
+
+
+# How to use
+## TSP module
+The TSP module's main class is `NodesGenerator`. It provides a few tools for working with the problem:
+- `__init__`<br />Has one required argument <i>`count`</i> and one optional <i>`saved_axis`</i>. The first one is just a nodes count (makes sense only if saved_axis is False or is not provided). And the second one is a boolean value that defines whether you already generated nodes or not. If False, it generates new nodes according to the count and saves their distances and axis to the data folder for subsequent use. If True, it uses already mentioned files.
+- `get_nodes_list`<br />Just returns a list consisting of the `Node` objects (a `Node` object simply has handy methods such as finding a distance between two nodes, and so on). String representation of each node is just a number of a node.
+- `total_cost`<br />Requires a list of the `Node` objects as an argument. Returns total cost of the way.
+- `draw_path`<br />Requires a list of the `Node` objects as an argument. Draws a graph with connected nodes in accordance with a nodes order.
+
+## GA module
+- `CrossoverType`<br />
+    Contains different types of a crossover:
+    - `MULTI_POINT`
+    - `SINGLE_POINT`
+    - `UNIFORM`
+    - `CYCLE`
+    - `PMX`
+- `MutationType`<br />
+    Contains different types of a mutation:
+    - `REPLACEMENT`
+    - `INVERSION`
+- `Crossover`<br />
+    - `__init__`<br />Requires one argument - `crossover_type`.
+    - `preform`<br />Has two required arguments: `parent1` (list), `parent2` (list), and one optional - `points` (should be provided only while performing a `MULTI_POINT` crossover). Returns an offspring from both parents.
+    - `set_type`<br />Exists as a setter for a new type, requires one argument `new_type`.
+- `Mutation`<br />
+    - `__init__`<br />Requires two arguments: `chance` (a chance of the mutation, from 0 to 1) and `mutation_type`.
+    - `preform`<br />Has one required argument `offspring` (list). Returns mutated (with some chance) `offspring`.
+    - `set_type`<br />Exists as a setter for a new type, requires one argument `new_type`.
+- `GeneticAlgorithm`<br />
+    - `__init__`<br />Requires four arguments: `mutation_chance`, `crossover_type`, `mutation_type`, and `fitness_function` (a function that returns a score of a single chromosome, in our case it is `total_score` from `NodesGenerator`)
+    - `init_population`<br />Requires two arguments: `k` (a size of the population) and `initial_chromosome` (some chromosome that will be shuffled to create different population members). Don't need to be called if you want to continue a life of the population.
+    - `start`<br />Requires two arguments: `k` (time of the population's living / an amount of evolutional steps) and `selector` (how many chromosomes will die and be replaces by offsprings during the selection process). Starts an evolution, prints a process of the evolution, fills a `history`. Returns a chromosome with the best result.
+    - `history`<br />A @property method that returns a history of the evolving (gotten after the `start` was successfully executed).
+
+<br /><br />
+
+
+# Experiments
+Will be added soon...

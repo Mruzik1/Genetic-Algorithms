@@ -3,7 +3,7 @@ from .mutation import Mutation, MutationType
 from random import shuffle, choices
 
 
-# created to solve only TSP (a minimization problem with ordered genes)
+# created to solve a minimization problem with ordered genes
 class GeneticAlgorithm:
     def __init__(self, mutation_chance: float, crossover_type: CrossoverType, mutation_type: MutationType, fitness_function):
         self.__crossover = Crossover(crossover_type)

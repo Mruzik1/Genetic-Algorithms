@@ -3,7 +3,7 @@ from enum import Enum
 
 
 class MutationType(Enum):
-    INVERTION = 0
+    INVERSION = 0
     REPLACEMENT = 1
 
 
@@ -22,7 +22,7 @@ class Mutation:
         if random() > self.__chance:
             return offspring
 
-        if self.__mutation_type == MutationType.INVERTION:
+        if self.__mutation_type == MutationType.INVERSION:
             return self.__inversion()
 
         elif self.__mutation_type == MutationType.REPLACEMENT:

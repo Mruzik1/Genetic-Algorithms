@@ -3,7 +3,7 @@ from random import shuffle
 
 
 crossover = Crossover(CrossoverType.MULTI_POINT)
-mutation = Mutation(1, MutationType.INVERTION)
+mutation = Mutation(1, MutationType.INVERSION)
 
 
 ## Regular crossovers

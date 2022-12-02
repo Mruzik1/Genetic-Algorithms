@@ -5,21 +5,21 @@ from .node import Node
 
 class NodesGenerator:
     # self.__axis_nodes - points (nodes) with random x and y
-    def __init__(self, count: int, saved_axis = None):
-        if (saved_axis == None):
+    def __init__(self, count: int, saved_axis = False):
+        if not saved_axis:
             x = np.random.choice(range(count), count, replace=False)
             y = np.random.choice(range(count), count, replace=False)
             self.__axis_nodes = np.array([x, y]).T
             
-            self.generate_file('./data/distances.txt')
-            self.save_axis('./data/axis.txt')
+            self.__generate_file('./data/distances.txt')
+            self.__save_axis('./data/axis.txt')
 
         else:
-            self.__axis_nodes = self.__read_from_file(saved_axis)
+            self.__axis_nodes = self.__read_from_file('./data/axis.txt')
     
 
     # generates a file with distances between the nodes
-    def generate_file(self, path: str):
+    def __generate_file(self, path: str):
         fp = open(path, 'w')
         for i, n1 in enumerate(self.__axis_nodes):
             for j, n2 in enumerate(self.__axis_nodes[i+1:]):
@@ -28,7 +28,7 @@ class NodesGenerator:
 
 
     # generates a file with axis
-    def save_axis(self, path: str):
+    def __save_axis(self, path: str):
         fp = open(path, 'w')
         for x, y in self.__axis_nodes:
             fp.write(f'{x} {y}\n')
