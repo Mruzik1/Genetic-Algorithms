@@ -150,7 +150,7 @@ Where N is a total population size, and <img src="https://latex.codecogs.com/png
 # How to use
 ## TSP module
 The TSP module's main class is `NodesGenerator`. It provides a few tools for working with the problem:
-- `__init__`<br />Has one required argument <i>`count`</i> and one optional <i>`saved_axis`</i>. The first one is just a nodes count (makes sense only if saved_axis is False or is not provided). And the second one is a boolean value that defines whether you already generated nodes or not. If False, it generates new nodes according to the count and saves their distances and axis to the data folder for subsequent use. If True, it uses already mentioned files.
+- `__init__`<br />Has one required argument `count` and one optional `saved_axis`. The first one is just a nodes count (makes sense only if saved_axis is False or is not provided). And the second one is a boolean value that defines whether you already generated nodes or not. If False, it generates new nodes according to the count and saves their distances and axis to the data folder for subsequent use. If True, it uses already mentioned files.
 - `get_nodes_list`<br />Just returns a list consisting of the `Node` objects (a `Node` object simply has handy methods such as finding a distance between two nodes, and so on). String representation of each node is just a number of a node.
 - `total_cost`<br />Requires a list of the `Node` objects as an argument. Returns total cost of the way.
 - `draw_path`<br />Requires a list of the `Node` objects as an argument. Draws a graph with connected nodes in accordance with a nodes order.
